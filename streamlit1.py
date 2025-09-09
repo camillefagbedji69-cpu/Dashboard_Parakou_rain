@@ -12,9 +12,15 @@ df = df.rename(columns={
     "ALLSKY_SFC_SW_DWN":"Radiation",
     "QV2M":"QV"
 })
+col = list(df.columns)
+cols = col[2:7] 
+for p in cols : 
+    df[p] = df[p].mask(df[p]<0) ##mettre NaN pour les valeurs aberrantes 
+    df = df.fillna(df[df[p]>0].median()) ##imputation par la médiane des valeurs positives
 
 st.title("Dashboard de la pluviométrie dans la commune de Parakou (Bénin)")
 
 fig = px.line(df, x="Date", y="Rain", title="Évolution de la pluviométrie")
 st.plotly_chart(fig)
+
 
