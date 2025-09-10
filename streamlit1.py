@@ -34,10 +34,43 @@ fig = go.Figure()
 # Pluviométrie
 fig.add_trace(go.Scatter(x=df["Date"], y=df["Rain"], mode='lines', name="Pluie", line=dict(color="blue")))
 
-# Exemple d'autre courbe (ex: température moyenne)
+# Courbe de l'évapotranspiration
 fig.add_trace(go.Scatter(x=df["Date"], y=df["ET0"], mode='lines', name="Evapotranspiration", line=dict(color="red")))
 
-fig.update_layout(title="Évolution de la pluie et l'évapotranspiration")
+## 
+in_dry = False
+start_date = None
+
+for i in range(len(df)):
+    if df["Rain"].iloc[i] < df["ET0"].iloc[i]:
+        if not in_dry:  # début d'une saison sèche
+            in_dry = True
+            start_date = df["Date"].iloc[i]
+    else:
+        if in_dry:  # fin de la saison sèche
+            fig.add_vrect(
+                x0=start_date, x1=df["Date"].iloc[i],
+                fillcolor="yellow", opacity=0.3,
+                layer="below", line_width=0,
+                annotation_text="Saison sèche", annotation_position="top left"
+            )
+            in_dry = False
+
+# Fermer si la série finit en saison sèche
+if in_dry:
+    fig.add_vrect(
+        x0=start_date, x1=df["Date"].iloc[-1],
+        fillcolor="yellow", opacity=0.3,
+        layer="below", line_width=0,
+        annotation_text="Saison sèche", annotation_position="top left"
+    )
+
+fig.update_layout(
+    title="Climatogramme avec saisons sèches détectées automatiquement",
+    xaxis_title="Date",
+    yaxis_title="mm"
+)
 st.plotly_chart(fig)
+
 
 
