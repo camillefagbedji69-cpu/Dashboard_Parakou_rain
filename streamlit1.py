@@ -51,8 +51,7 @@ for i in range(len(df)):
             fig.add_vrect(
                 x0=start_date, x1=df["Date"].iloc[i],
                 fillcolor="yellow", opacity=0.3,
-                layer="below", line_width=0,
-                annotation_text="Saison sèche", annotation_position="top left"
+                layer="below", line_width=0
             )
             in_dry = False
 
@@ -61,8 +60,7 @@ if in_dry:
     fig.add_vrect(
         x0=start_date, x1=df["Date"].iloc[-1],
         fillcolor="yellow", opacity=0.3,
-        layer="below", line_width=0,
-        annotation_text="Saison sèche", annotation_position="top left"
+        layer="below", line_width=0
     )
 
 fig.update_layout(
@@ -71,6 +69,7 @@ fig.update_layout(
     yaxis_title="mm"
 )
 st.plotly_chart(fig)
+
 
 
 
