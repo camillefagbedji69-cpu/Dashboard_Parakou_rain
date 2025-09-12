@@ -24,6 +24,8 @@ Le script calcule l’**évapotranspiration selon la méthode de Hargreaves** et
   * `ALLSKY_SFC_SW_DWN` → Radiation solaire (MJ/m²/jour)
   * `QV2M` → Humidité spécifique
 
+## URL de l'application 
+https://dashboardparakourain-fzjaqrr9kg76cssg8q3f9x.streamlit.app/
 ## 🔧 Améliorations possibles
 
 * Ajouter des indicateurs agroclimatiques (Indice de sécheresse, SPEI, etc.).
