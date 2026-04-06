@@ -31,9 +31,3 @@ https://dashboardparakourain-fzjaqrr9kg76cssg8q3f9x.streamlit.app/
 * Ajouter des indicateurs agroclimatiques (Indice de sécheresse, SPEI, etc.).
 * Intégrer d’autres stations ou communes du Bénin.
 * Comparer les saisons sèches détectées avec les observations de terrain.
-
-## 👨‍💻 Auteur
-
-**Camille Boris FAGBEDJI**
-Master en Sciences Agronomiques – Université de Parakou (Bénin)
-Spécialisation en **ingénierie des eaux et sols, télédétection et modélisation écohydrologique**.
